@@ -1,0 +1,16 @@
+To solve this issue, use the `box-sizing` property:
+
+```css
+.container {
+  width: 50%;
+}
+
+.element {
+  box-sizing: border-box; /* Include padding and border in total width */
+  width: calc(100% - 10px);
+  padding: 5%;
+  background-color: lightblue;
+}
+```
+
+By setting `box-sizing: border-box;`, the padding is now included within the `100%` calculation, resulting in the correct width after subtracting 10px.  The element will now accurately reflect the intended size.
