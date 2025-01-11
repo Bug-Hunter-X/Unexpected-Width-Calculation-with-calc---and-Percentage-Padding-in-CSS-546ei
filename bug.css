@@ -1,0 +1,15 @@
+The following CSS code snippet demonstrates an uncommon error involving the use of the `calc()` function with percentage values and padding.  The issue arises when attempting to calculate a width based on a percentage and then subtracting padding from that calculated width.  The padding percentage is relative to the *calculated* width, not the parent container's width.
+
+```css
+.container {
+  width: 50%;
+}
+
+.element {
+  width: calc(100% - 10px);
+  padding: 5%; /* This padding is relative to the element's calculated width, not the container */
+  background-color: lightblue;
+}
+```
+
+The intended behavior is that the `element`'s width should be 10px less than its parent's width. However, because the padding is calculated after the initial width calculation, it doesn't produce the expected result.  The padding will add extra width, effectively negating some or all of the 10px subtraction, resulting in the element being wider than expected.
